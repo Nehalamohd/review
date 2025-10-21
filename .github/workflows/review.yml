@@ -1,23 +1,30 @@
-name: review
+name: Build, Train, and Deploy
 
-on: 
+on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-    build-train-deploy:
-        runs-on: window:latest
+  build-train-deploy:
+    runs-on: ubundu-latest
 
-        steps:
-          - name: Checkout 
-            uses: ations/checkout@v3
-          - name: Set up Python
-            uses: setup-python@v4
-            with:
-                python-version: 3.11
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-          - name: Train model
-            uses: src/train.py
-          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+
+
+      - name: Train model
+        run: python src/train.py
+
+
+      
+        run: python src/train.py
+
 
         
